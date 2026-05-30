@@ -1,0 +1,148 @@
+/* ===================================================
+   BREW HAVEN CAFÉ — Animation Library
+   All keyframes are defined here and imported globally
+   =================================================== */
+
+/* ---------------------------------------------------
+   1. PAGE BACKGROUND — Slow warm gradient drift
+   --------------------------------------------------- */
+@keyframes gradientDrift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------------------------------------------------
+   2. STEAM — Rise + fade + sway
+   --------------------------------------------------- */
+@keyframes steamRise {
+  0%   { transform: translateY(0)   scaleX(1);    opacity: 0; }
+  15%  { opacity: 0.55; }
+  60%  { opacity: 0.3; }
+  100% { transform: translateY(-140px) scaleX(1.6); opacity: 0; }
+}
+
+@keyframes steamSway {
+  0%   { margin-left: 0px; }
+  25%  { margin-left: 8px; }
+  50%  { margin-left: -6px; }
+  75%  { margin-left: 10px; }
+  100% { margin-left: 0px; }
+}
+
+/* ---------------------------------------------------
+   3. FLOATING ELEMENTS — gentle orbit/drift
+   --------------------------------------------------- */
+@keyframes floatA {
+  0%   { transform: translateY(0px)   translateX(0px)   rotate(0deg); }
+  33%  { transform: translateY(-18px) translateX(10px)  rotate(6deg); }
+  66%  { transform: translateY(-8px)  translateX(-8px)  rotate(-4deg); }
+  100% { transform: translateY(0px)   translateX(0px)   rotate(0deg); }
+}
+
+@keyframes floatB {
+  0%   { transform: translateY(0px)   translateX(0px)   rotate(0deg); }
+  33%  { transform: translateY(14px)  translateX(-12px) rotate(-8deg); }
+  66%  { transform: translateY(-6px)  translateX(10px)  rotate(5deg); }
+  100% { transform: translateY(0px)   translateX(0px)   rotate(0deg); }
+}
+
+@keyframes floatC {
+  0%   { transform: translateY(0px)   translateX(0px); }
+  50%  { transform: translateY(-22px) translateX(6px); }
+  100% { transform: translateY(0px)   translateX(0px); }
+}
+
+/* ---------------------------------------------------
+   4. GLOW PULSE — radial warm light
+   --------------------------------------------------- */
+@keyframes glowPulse {
+  0%   { opacity: 0.35; transform: scale(1); }
+  50%  { opacity: 0.6;  transform: scale(1.08); }
+  100% { opacity: 0.35; transform: scale(1); }
+}
+
+@keyframes glowShift {
+  0%   { opacity: 0.2; transform: translate(0, 0)   scale(1); }
+  33%  { opacity: 0.45; transform: translate(30px, -20px) scale(1.1); }
+  66%  { opacity: 0.3;  transform: translate(-20px, 15px) scale(0.95); }
+  100% { opacity: 0.2; transform: translate(0, 0)   scale(1); }
+}
+
+/* ---------------------------------------------------
+   5. BOKEH / PARTICLE — slow upward drift with fade
+   --------------------------------------------------- */
+@keyframes bokehDrift {
+  0%   { transform: translateY(0)     opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* ---------------------------------------------------
+   6. HERO TEXT — enhanced entrance
+   --------------------------------------------------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ---------------------------------------------------
+   7. SCROLL INDICATOR
+   --------------------------------------------------- */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(12px); opacity: 0.2; }
+}
+
+/* ---------------------------------------------------
+   8. SHIMMER — skeleton loading
+   --------------------------------------------------- */
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ---------------------------------------------------
+   9. CARD BADGE POP
+   --------------------------------------------------- */
+@keyframes pop {
+  0%   { transform: scale(0); }
+  70%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ---------------------------------------------------
+   10. HERO IMAGE ZOOM
+   --------------------------------------------------- */
+@keyframes heroZoom {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+
+/* ---------------------------------------------------
+   11. GRAIN TEXTURE DRIFT (performance-safe)
+   --------------------------------------------------- */
+@keyframes grainShift {
+  0%,100% { transform: translate(0,0); }
+  10%     { transform: translate(-2%,-3%); }
+  30%     { transform: translate(2%,2%); }
+  50%     { transform: translate(-1%,4%); }
+  70%     { transform: translate(3%,-1%); }
+  90%     { transform: translate(-2%,1%); }
+}
