@@ -28,13 +28,13 @@
   justify-content: space-between;
 }
 
-/* Logo */
 .logo {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
   cursor: pointer;
   user-select: none;
+  white-space: nowrap;
 }
 
 .logoIcon {
@@ -172,6 +172,14 @@
 @media (max-width: 768px) {
   .hamburger { display: flex; }
 
+  .inner {
+    padding: 0 var(--space-md);
+  }
+
+  .logoText {
+    font-size: 1.05rem;
+  }
+
   .nav {
     position: fixed;
     top: var(--navbar-height);
@@ -195,5 +203,11 @@
     text-align: center;
     font-size: 1rem;
     padding: var(--space-md);
+  }
+}
+
+@media (max-width: 400px) {
+  .logoText {
+    font-size: 0.95rem;
   }
 }
