@@ -10,3 +10,13 @@ services:
         value: production
       - key: MONGO_URI
         sync: false # Render will prompt you for this value during deployment
+
+  - type: web
+    name: brew-haven-client
+    runtime: static
+    rootDir: client
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./client/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://cafe-web-zygj.onrender.com

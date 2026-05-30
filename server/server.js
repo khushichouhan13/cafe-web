@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
   'http://localhost:5173',
   /\.vercel\.app$/,        // any *.vercel.app subdomain
+  /\.onrender\.com$/,      // any *.onrender.com subdomain
 ];
 
 app.use(cors({
@@ -45,11 +46,78 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, message: 'Internal Server Error' });
 });
 
+const Product = require('./models/Product');
+
+// Auto-seed function to ensure products exist in the database
+const autoSeedProducts = async () => {
+  try {
+    const count = await Product.countDocuments();
+    if (count === 0) {
+      console.log('🌱 No products found in database. Auto-seeding default products...');
+      const defaultProducts = [
+        {
+          name: 'Midnight Roast',
+          description: 'Bold, velvety espresso with notes of dark chocolate and smoky undertones.',
+          price: 420,
+          category: 'coffee',
+          imageUrl: '/images/midnight_roast.png',
+          badge: 'Popular'
+        },
+        {
+          name: 'Oat Milk Latte',
+          description: 'Silky smooth latte crafted with house-made oat milk and single-origin espresso.',
+          price: 460,
+          category: 'oatmilk',
+          imageUrl: '/images/oat_milk_latte.png',
+          badge: 'New'
+        },
+        {
+          name: 'Hibiscus Iced Tea',
+          description: 'Refreshing floral iced tea with hibiscus, mint, and a hint of citrus.',
+          price: 380,
+          category: 'snacks',
+          imageUrl: '/images/hibiscus_iced_tea.png',
+          badge: 'Seasonal'
+        },
+        {
+          name: 'Almond Croissant',
+          description: 'Twice-baked butter croissant filled with almond cream and toasted flakes.',
+          price: 340,
+          category: 'snacks',
+          imageUrl: '/images/almond_croissant.png',
+          badge: ''
+        },
+        {
+          name: 'Cold Brew Float',
+          description: 'Signature cold brew topped with a scoop of vanilla bean ice cream.',
+          price: 549,
+          category: 'coffee',
+          imageUrl: '/images/cold_brew_float.png',
+          badge: "Chef's Pick"
+        },
+        {
+          name: 'Avocado Tartine',
+          description: 'Sourdough toast with whipped avocado, microgreens, and everything seasoning.',
+          price: 680,
+          category: 'snacks',
+          imageUrl: '/images/avocado_tartine.png',
+          badge: ''
+        }
+      ];
+      await Product.insertMany(defaultProducts);
+      console.log('✅ Auto-seeding completed successfully!');
+    }
+  } catch (err) {
+    console.error('⚠️ Auto-seeding failed:', err.message);
+  }
+};
+
 // Connect to MongoDB
 const connectDB = async () => {
   if (mongoose.connection.readyState === 0) {
     await mongoose.connect(process.env.MONGO_URI);
     console.log('✅ MongoDB connected');
+    await autoSeedProducts();
   }
 };
 

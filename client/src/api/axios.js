@@ -1,9 +1,13 @@
 import axios from 'axios';
 
-// Uses VITE_API_URL env var in production (set in Vercel dashboard)
-// Falls back to localhost for local development
+const getBaseURL = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (!envUrl) return 'http://localhost:5000/api';
+  return envUrl.endsWith('/api') ? envUrl : `${envUrl.replace(/\/$/, '')}/api`;
+};
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: getBaseURL(),
   headers: { 'Content-Type': 'application/json' }
 });
 
