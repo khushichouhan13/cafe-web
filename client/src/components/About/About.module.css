@@ -158,6 +158,9 @@
 }
 
 @media (max-width: 800px) {
+  .section {
+    padding: var(--space-2xl) 0;
+  }
   .container {
     grid-template-columns: 1fr;
     gap: var(--space-2xl);

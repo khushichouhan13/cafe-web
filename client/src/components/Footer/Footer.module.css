@@ -139,5 +139,6 @@
 }
 
 @media (max-width: 580px) {
+  .footer { padding: var(--space-2xl) 0 0; }
   .top { grid-template-columns: 1fr; gap: var(--space-xl); }
 }

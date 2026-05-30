@@ -137,10 +137,12 @@
 
 /* Responsive */
 @media (max-width: 900px) {
+  .section { padding: var(--space-2xl) 0; }
   .grid, .loadingState { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 580px) {
+  .section { padding: var(--space-xl) 0; }
   .grid, .loadingState { grid-template-columns: 1fr; }
   .tabs { flex-wrap: wrap; justify-content: center; }
 }
