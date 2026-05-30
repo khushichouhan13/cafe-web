@@ -53,17 +53,8 @@ const connectDB = async () => {
   }
 };
 
-// For local dev: start the server
-if (process.env.NODE_ENV !== 'production') {
-  connectDB()
-    .then(() => app.listen(PORT, () =>
-      console.log(`☕ Server running on http://localhost:${PORT}`)
-    ))
-    .catch(err => {
-      console.error('❌ MongoDB connection failed:', err.message);
-      process.exit(1);
-    });
-} else {
+// Start the server or configure Vercel Serverless environment
+if (process.env.VERCEL || process.env.NOW_REGION) {
   // For Vercel serverless: connect lazily on each request
   app.use(async (req, res, next) => {
     try {
@@ -73,6 +64,16 @@ if (process.env.NODE_ENV !== 'production') {
       res.status(500).json({ success: false, message: 'Database connection failed' });
     }
   });
+} else {
+  // For standard environments (Render, local dev, Docker etc.): start the server
+  connectDB()
+    .then(() => app.listen(PORT, () =>
+      console.log(`☕ Server running on http://localhost:${PORT}`)
+    ))
+    .catch(err => {
+      console.error('❌ MongoDB connection failed:', err.message);
+      process.exit(1);
+    });
 }
 
 // Export for Vercel serverless

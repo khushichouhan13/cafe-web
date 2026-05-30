@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: brew-haven-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false # Render will prompt you for this value during deployment
