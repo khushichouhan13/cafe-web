@@ -36,6 +36,12 @@
   font-size: 1.05rem;
 }
 
+.logoSvg {
+  color: var(--color-brown-light);
+  flex-shrink: 0;
+  display: block;
+}
+
 .tagline {
   font-size: 0.85rem;
   line-height: 1.6;

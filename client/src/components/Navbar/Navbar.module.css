@@ -37,8 +37,10 @@
   white-space: nowrap;
 }
 
-.logoIcon {
-  font-size: 1.4rem;
+.logoSvg {
+  color: var(--color-brown-mid);
+  flex-shrink: 0;
+  display: block;
 }
 
 .logoText {
